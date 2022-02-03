@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/cube.dir/main.c.o  -o cube  -lSDL2 
