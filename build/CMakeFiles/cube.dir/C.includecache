@@ -8,7 +8,11 @@
 
 /home/emery/cube/main.c
 SDL.h
-/home/emery/cube/SDL.h
+-
+stdbool.h
+-
+stdio.h
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h
