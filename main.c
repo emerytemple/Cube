@@ -13,8 +13,13 @@
 
 SDL_Window *create_app();
 void destroy_app(SDL_Window *window);
-void handle_event(bool *quit, SDL_Event *event);
+void handle_event(bool *quit, SDL_Event *event); // note(emery): return quit?
 void handle_keyboard_event(SDL_KeyboardEvent key);
+void handle_mouse_motion_event(SDL_MouseMotionEvent motion);
+void handle_mouse_button_event(SDL_MouseButtonEvent button);
+void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel);
+
+
 
 int main(int argc, char *argv[])
 {
@@ -77,6 +82,16 @@ void handle_event(bool *quit, SDL_Event *event)
 		case SDL_KEYUP:
 			handle_keyboard_event(event->key);
 			break;
+		case SDL_MOUSEMOTION:
+			handle_mouse_motion_event(event->motion);
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+			handle_mouse_button_event(event->button);
+			break;
+		case SDL_MOUSEWHEEL:
+			handle_mouse_wheel_event(event->wheel);
+			break;
 		default:
 			break;
 	}
@@ -108,6 +123,39 @@ void handle_keyboard_event(SDL_KeyboardEvent key)
 	}
 }
 
+void handle_mouse_motion_event(SDL_MouseMotionEvent motion)
+{
+	printf("x = %d, y = %d, xrel = %d, yrel = %d\n", motion.x, motion.y, motion.xrel, motion.yrel);
+}
+
+void handle_mouse_button_event(SDL_MouseButtonEvent button)
+{
+	switch(button.button)
+	{
+		case SDL_BUTTON_LEFT:
+			puts("button left");
+			break;
+		case SDL_BUTTON_MIDDLE:
+			puts("button middle");
+			break;
+		case SDL_BUTTON_RIGHT:
+			puts("button right");
+			break;
+		case SDL_BUTTON_X1:
+			puts("button x1");
+			break;
+		case SDL_BUTTON_X2:
+			puts("button x2");
+			break;
+		default:
+			break;
+	}
+}
+
+void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel)
+{
+	printf("x = %d, y = %d\n", wheel.x, wheel.y);
+}
 
 
 
