@@ -1,4 +1,87 @@
 
+void handle_controller_axis_event(SDL_ControllerAxisEvent caxis);
+void handle_controller_button_event(SDL_ControllerButtonEvent cbutton);
+void handle_controller_device_event(SDL_ControllerDeviceEvent cdevice);
+
+#if 0
+		case SDL_CONTROLLERAXISMOTION:
+			handle_controller_axis_event(event->caxis);
+			break;
+		case SDL_CONTROLLERBUTTONDOWN:
+		case SDL_CONTROLLERBUTTONUP:
+			handle_controller_button_event(event->cbutton);
+			break;
+		case SDL_CONTROLLERDEVICEADDED:
+		case SDL_CONTROLLERDEVICEREMOVED:
+		//  case SDL_CONATROLLERDEVICEREMAPPED:
+			handle_controller_device_event(event->cdevice);
+			break;
+#endif
+
+
+void handle_controller_axis_event(SDL_ControllerAxisEvent caxis)
+{
+	switch(caxis.axis)
+	{
+		case SDL_CONTROLLER_AXIS_LEFTX:
+			printf("leftx, ");
+			break;
+		case SDL_CONTROLLER_AXIS_LEFTY:
+			printf("lefty, ");
+			break;
+		case SDL_CONTROLLER_AXIS_RIGHTX:
+			printf("rightx, ");
+			break;
+		case SDL_CONTROLLER_AXIS_RIGHTY:
+			printf("righty, ");
+			break;
+		case SDL_CONTROLLER_AXIS_TRIGGERLEFT:
+			printf("trigger left, ");
+			break;
+		case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+			printf("trigger right, ");
+			break;
+		default:
+			break;
+	}
+
+	printf("value = %d\n", caxis.value);
+
+}
+
+void handle_controller_button_event(SDL_ControllerButtonEvent cbutton)
+{
+}
+
+void handle_controller_device_event(SDL_ControllerDeviceEvent cdevice)
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # list new variables from included package
 get_directory_property(_vars_before VARIABLES)
 find_package(SDL2 REQUIRED)

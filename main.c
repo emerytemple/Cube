@@ -13,8 +13,16 @@
 
 SDL_Window *create_app();
 void destroy_app(SDL_Window *window);
+
 void handle_event(bool *quit, SDL_Event *event); // note(emery): return quit?
+
 void handle_keyboard_event(SDL_KeyboardEvent key);
+
+void handle_joy_axis_event(SDL_JoyAxisEvent jaxis);
+void handle_joy_hat_event(SDL_JoyHatEvent jhat); // dpad
+void handle_joy_button_event(SDL_JoyButtonEvent jbutton);
+void handle_joy_device_event(SDL_JoyDeviceEvent jdevice);
+
 void handle_mouse_motion_event(SDL_MouseMotionEvent motion);
 void handle_mouse_button_event(SDL_MouseButtonEvent button);
 void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel);
@@ -23,7 +31,20 @@ void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel);
 
 int main(int argc, char *argv[])
 {
+	SDL_Joystick *controller = NULL;
+
 	SDL_Window *window = create_app();
+
+	if(SDL_NumJoysticks() < 1)
+	{
+		puts("Warning: No Joysticks connected!\n");
+	}
+
+	controller = SDL_JoystickOpen(0);
+	if(controller == NULL)
+	{
+		printf("Warning: Unable to open game controller! SDL_Error: %s\n", SDL_GetError());
+	}
 
 	bool quit = false;
 	SDL_Event event;
@@ -43,14 +64,18 @@ int main(int argc, char *argv[])
 		SDL_UpdateWindowSurface(window);
 	}
 
+	SDL_JoystickClose(controller);
+	controller = NULL;
+
 	destroy_app(window);
+	window = NULL;
 
 	return 0;
 }
 
 SDL_Window *create_app()
 {
-	int success = SDL_Init(SDL_INIT_VIDEO);
+	int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
 	if(success != 0) printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 
 	const char *title = "Cube";
@@ -81,6 +106,20 @@ void handle_event(bool *quit, SDL_Event *event)
 		case SDL_KEYDOWN:
 		case SDL_KEYUP:
 			handle_keyboard_event(event->key);
+			break;
+		case SDL_JOYAXISMOTION:
+			handle_joy_axis_event(event->jaxis);
+			break;
+		case SDL_JOYHATMOTION:
+			handle_joy_hat_event(event->jhat);
+			break;
+		case SDL_JOYBUTTONDOWN:
+		case SDL_JOYBUTTONUP:
+			handle_joy_button_event(event->jbutton);
+			break;
+		case SDL_JOYDEVICEADDED:
+		case SDL_JOYDEVICEREMOVED:
+			handle_joy_device_event(event->jdevice);
 			break;
 		case SDL_MOUSEMOTION:
 			handle_mouse_motion_event(event->motion);
@@ -123,6 +162,26 @@ void handle_keyboard_event(SDL_KeyboardEvent key)
 	}
 }
 
+void handle_joy_axis_event(SDL_JoyAxisEvent jaxis)
+{
+	printf("axis = %d, value = %d\n", jaxis.axis, jaxis.value);
+}
+
+void handle_joy_hat_event(SDL_JoyHatEvent jhat)
+{
+	printf("hat = %d, value = %d\n", jhat.hat, jhat.value);
+}
+
+void handle_joy_button_event(SDL_JoyButtonEvent jbutton)
+{
+	printf("type = %d, button = %d, state = %d\n", jbutton.type, jbutton.button, jbutton.state);
+}
+
+void handle_joy_device_event(SDL_JoyDeviceEvent jdevice)
+{
+
+}
+
 void handle_mouse_motion_event(SDL_MouseMotionEvent motion)
 {
 	printf("x = %d, y = %d, xrel = %d, yrel = %d\n", motion.x, motion.y, motion.xrel, motion.yrel);
@@ -156,7 +215,6 @@ void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel)
 {
 	printf("x = %d, y = %d\n", wheel.x, wheel.y);
 }
-
 
 
 
