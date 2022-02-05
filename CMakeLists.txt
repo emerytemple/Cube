@@ -6,8 +6,21 @@ set(C_STANDARD_REQUIRED True)
 
 find_package(SDL2 REQUIRED)
 
-include_directories(${SDL2_INCLUDE_DIRS})
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
-add_executable(${PROJECT_NAME} main.c)
+include_directories(${SDL2_INCLUDE_DIRS} SRC_DIR)
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+
+add_library(event SHARED ../src/event.c)
+
+add_executable(${PROJECT_NAME} ../src/main.c)
+
+target_link_libraries(
+	${PROJECT_NAME}
+	PUBLIC
+	${SDL2_LIBRARIES}
+	event
+)

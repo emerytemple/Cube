@@ -1,1 +1,1 @@
-/usr/bin/cc    CMakeFiles/cube.dir/main.c.o  -o cube  -lSDL2 
+/usr/bin/cc    CMakeFiles/cube.dir/src/main.c.o  -o ../bin/cube  -Wl,-rpath,/home/emery/cube/lib -lSDL2 ../lib/libevent.so 

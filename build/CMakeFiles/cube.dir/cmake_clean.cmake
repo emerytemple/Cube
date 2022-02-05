@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cube.dir/main.c.o"
-  "cube"
-  "cube.pdb"
+  "../bin/cube"
+  "../bin/cube.pdb"
+  "CMakeFiles/cube.dir/src/main.c.o"
 )
 
 # Per-language clean rules from dependency scanning.

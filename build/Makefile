@@ -123,32 +123,72 @@ cube/fast:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
 .PHONY : cube/fast
 
-main.o: main.c.o
+#=============================================================================
+# Target rules for targets named event
 
-.PHONY : main.o
+# Build rule for target.
+event: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 event
+.PHONY : event
+
+# fast build rule for target.
+event/fast:
+	$(MAKE) -f CMakeFiles/event.dir/build.make CMakeFiles/event.dir/build
+.PHONY : event/fast
+
+src/event.o: src/event.c.o
+
+.PHONY : src/event.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/main.c.o
-.PHONY : main.c.o
+src/event.c.o:
+	$(MAKE) -f CMakeFiles/event.dir/build.make CMakeFiles/event.dir/src/event.c.o
+.PHONY : src/event.c.o
 
-main.i: main.c.i
+src/event.i: src/event.c.i
 
-.PHONY : main.i
+.PHONY : src/event.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/main.c.i
-.PHONY : main.c.i
+src/event.c.i:
+	$(MAKE) -f CMakeFiles/event.dir/build.make CMakeFiles/event.dir/src/event.c.i
+.PHONY : src/event.c.i
 
-main.s: main.c.s
+src/event.s: src/event.c.s
 
-.PHONY : main.s
+.PHONY : src/event.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/main.c.s
-.PHONY : main.c.s
+src/event.c.s:
+	$(MAKE) -f CMakeFiles/event.dir/build.make CMakeFiles/event.dir/src/event.c.s
+.PHONY : src/event.c.s
+
+src/main.o: src/main.c.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.c.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.o
+.PHONY : src/main.c.o
+
+src/main.i: src/main.c.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.c.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.i
+.PHONY : src/main.c.i
+
+src/main.s: src/main.c.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.c.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.s
+.PHONY : src/main.c.s
 
 # Help Target
 help:
@@ -159,9 +199,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cube"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... event"
+	@echo "... src/event.o"
+	@echo "... src/event.i"
+	@echo "... src/event.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

@@ -6,21 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/emery/cube/src/event.h
-SDL.h
--
-stdbool.h
--
-
-/home/emery/cube/src/main.c
-SDL.h
--
-stdbool.h
--
+/home/emery/cube/src/event.c
 stdio.h
 -
 event.h
 /home/emery/cube/src/event.h
+
+/home/emery/cube/src/event.h
+SDL.h
+-
+stdbool.h
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

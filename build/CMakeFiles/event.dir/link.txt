@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libevent.so -o ../lib/libevent.so CMakeFiles/event.dir/src/event.c.o 
