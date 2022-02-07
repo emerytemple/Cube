@@ -1,4 +1,71 @@
 
+
+event
+	+	more direct
+	-	can get clogged up if lagging
+polling
+	+	skips multiple analog inputs
+	-	can miss input if lagging or fast presses
+solution
+	put non input on event (quit, window, etc) and poll controller input
+
+
+
+
+	cegui - c++
+	qt - c++
+	librocket - html
+	nanogui-sdl - c++
+kiss_sdl
+	dear imgui - c++
+	guichan - c++
+	geeonx gui - sdl1
+	neoGFX - c++
+	SDL_gui - c++
+	SDL_widgets - c++
+nuklear
+	KiWi (killer widgets) - java
+	Rose - c++
+	nngui - c++
+	gwen - c++
+	AntTweakBar - c++
+	SimpleGUI -tkinter (python)
+	FlatUI - c++
+
+lvgl
+	TotalCross - java
+uGFX
+
+
+
+
+GUIslice
+GuiLite
+Sciter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void handle_controller_axis_event(SDL_ControllerAxisEvent caxis);
 void handle_controller_button_event(SDL_ControllerButtonEvent cbutton);
 void handle_controller_device_event(SDL_ControllerDeviceEvent cdevice);

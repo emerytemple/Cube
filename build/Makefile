@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/emery/cube/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,6 +124,32 @@ cube/fast:
 .PHONY : cube/fast
 
 #=============================================================================
+# Target rules for targets named render
+
+# Build rule for target.
+render: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 render
+.PHONY : render
+
+# fast build rule for target.
+render/fast:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/build
+.PHONY : render/fast
+
+#=============================================================================
+# Target rules for targets named input
+
+# Build rule for target.
+input: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 input
+.PHONY : input
+
+# fast build rule for target.
+input/fast:
+	$(MAKE) -f CMakeFiles/input.dir/build.make CMakeFiles/input.dir/build
+.PHONY : input/fast
+
+#=============================================================================
 # Target rules for targets named event
 
 # Build rule for target.
@@ -163,6 +189,33 @@ src/event.c.s:
 	$(MAKE) -f CMakeFiles/event.dir/build.make CMakeFiles/event.dir/src/event.c.s
 .PHONY : src/event.c.s
 
+src/input.o: src/input.c.o
+
+.PHONY : src/input.o
+
+# target to build an object file
+src/input.c.o:
+	$(MAKE) -f CMakeFiles/input.dir/build.make CMakeFiles/input.dir/src/input.c.o
+.PHONY : src/input.c.o
+
+src/input.i: src/input.c.i
+
+.PHONY : src/input.i
+
+# target to preprocess a source file
+src/input.c.i:
+	$(MAKE) -f CMakeFiles/input.dir/build.make CMakeFiles/input.dir/src/input.c.i
+.PHONY : src/input.c.i
+
+src/input.s: src/input.c.s
+
+.PHONY : src/input.s
+
+# target to generate assembly for a file
+src/input.c.s:
+	$(MAKE) -f CMakeFiles/input.dir/build.make CMakeFiles/input.dir/src/input.c.s
+.PHONY : src/input.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -190,22 +243,57 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/render.o: src/render.c.o
+
+.PHONY : src/render.o
+
+# target to build an object file
+src/render.c.o:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.o
+.PHONY : src/render.c.o
+
+src/render.i: src/render.c.i
+
+.PHONY : src/render.i
+
+# target to preprocess a source file
+src/render.c.i:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.i
+.PHONY : src/render.c.i
+
+src/render.s: src/render.c.s
+
+.PHONY : src/render.s
+
+# target to generate assembly for a file
+src/render.c.s:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.s
+.PHONY : src/render.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cube"
+	@echo "... render"
+	@echo "... rebuild_cache"
+	@echo "... input"
 	@echo "... event"
 	@echo "... src/event.o"
 	@echo "... src/event.i"
 	@echo "... src/event.s"
+	@echo "... src/input.o"
+	@echo "... src/input.i"
+	@echo "... src/input.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/render.o"
+	@echo "... src/render.i"
+	@echo "... src/render.s"
 .PHONY : help
 
 

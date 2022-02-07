@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libinput.so -o ../lib/libinput.so CMakeFiles/input.dir/src/input.c.o 

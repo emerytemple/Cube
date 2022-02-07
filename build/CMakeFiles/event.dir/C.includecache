@@ -17,6 +17,12 @@ SDL.h
 -
 stdbool.h
 -
+input.h
+/home/emery/cube/src/input.h
+
+/home/emery/cube/src/input.h
+SDL.h
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

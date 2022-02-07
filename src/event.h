@@ -5,13 +5,15 @@
 #include <SDL.h>
 #include <stdbool.h>
 
-void handle_event(bool *quit, SDL_Event *event); // note(emery): return quit?
+#include "input.h"
+
+void handle_event(SDL_Event *event, bool *quit, struct RawInput *input); // note(emery): return quit?
 
 void handle_keyboard_event(SDL_KeyboardEvent key);
 
-void handle_joy_axis_event(SDL_JoyAxisEvent jaxis);
-void handle_joy_hat_event(SDL_JoyHatEvent jhat); // dpad
-void handle_joy_button_event(SDL_JoyButtonEvent jbutton);
+void handle_joy_axis_event(SDL_JoyAxisEvent jaxis, struct RawInput *input);
+void handle_joy_hat_event(SDL_JoyHatEvent jhat, struct RawInput *input); // dpad
+void handle_joy_button_event(SDL_JoyButtonEvent jbutton, struct RawInput *input);
 void handle_joy_device_event(SDL_JoyDeviceEvent jdevice);
 
 void handle_mouse_motion_event(SDL_MouseMotionEvent motion);

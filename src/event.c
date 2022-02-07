@@ -3,7 +3,7 @@
 
 #include "event.h"
 
-void handle_event(bool *quit, SDL_Event *event)
+void handle_event(SDL_Event *event, bool *quit, struct RawInput *input)
 {
 	switch(event->type)
 	{
@@ -15,14 +15,14 @@ void handle_event(bool *quit, SDL_Event *event)
 			handle_keyboard_event(event->key);
 			break;
 		case SDL_JOYAXISMOTION:
-			handle_joy_axis_event(event->jaxis);
+			handle_joy_axis_event(event->jaxis, input);
 			break;
 		case SDL_JOYHATMOTION:
-			handle_joy_hat_event(event->jhat);
+			handle_joy_hat_event(event->jhat, input);
 			break;
 		case SDL_JOYBUTTONDOWN:
 		case SDL_JOYBUTTONUP:
-			handle_joy_button_event(event->jbutton);
+			handle_joy_button_event(event->jbutton, input);
 			break;
 		case SDL_JOYDEVICEADDED:
 		case SDL_JOYDEVICEREMOVED:
@@ -69,17 +69,19 @@ void handle_keyboard_event(SDL_KeyboardEvent key)
 	}
 }
 
-void handle_joy_axis_event(SDL_JoyAxisEvent jaxis)
+void handle_joy_axis_event(SDL_JoyAxisEvent jaxis, struct RawInput *input)
 {
-	printf("axis = %d, value = %d\n", jaxis.axis, jaxis.value);
+	input->joy_axis_value[jaxis.axis] = jaxis.value;
+	print_input(input);
 }
 
-void handle_joy_hat_event(SDL_JoyHatEvent jhat)
+void handle_joy_hat_event(SDL_JoyHatEvent jhat, struct RawInput *input)
 {
-	printf("hat = %d, value = %d\n", jhat.hat, jhat.value);
+	input->joy_hat_value = jhat.value;
+	print_input(input);
 }
 
-void handle_joy_button_event(SDL_JoyButtonEvent jbutton)
+void handle_joy_button_event(SDL_JoyButtonEvent jbutton, struct RawInput *input)
 {
 	printf("type = %d, button = %d, state = %d\n", jbutton.type, jbutton.button, jbutton.state);
 }
@@ -91,7 +93,7 @@ void handle_joy_device_event(SDL_JoyDeviceEvent jdevice)
 
 void handle_mouse_motion_event(SDL_MouseMotionEvent motion)
 {
-	printf("x = %d, y = %d, xrel = %d, yrel = %d\n", motion.x, motion.y, motion.xrel, motion.yrel);
+	// printf("x = %d, y = %d, xrel = %d, yrel = %d\n", motion.x, motion.y, motion.xrel, motion.yrel);
 }
 
 void handle_mouse_button_event(SDL_MouseButtonEvent button)
@@ -122,3 +124,22 @@ void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel)
 {
 	printf("x = %d, y = %d\n", wheel.x, wheel.y);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

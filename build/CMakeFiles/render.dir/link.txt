@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,librender.so -o ../lib/librender.so CMakeFiles/render.dir/src/render.c.o 

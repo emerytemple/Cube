@@ -6,29 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/emery/cube/src/event.h
-SDL.h
--
-stdbool.h
--
-input.h
-/home/emery/cube/src/input.h
-
 /home/emery/cube/src/input.h
 SDL.h
 -
 
-/home/emery/cube/src/main.c
-SDL.h
--
-stdbool.h
--
-stdio.h
--
-event.h
-/home/emery/cube/src/event.h
-input.h
-/home/emery/cube/src/input.h
+/home/emery/cube/src/render.c
 render.h
 /home/emery/cube/src/render.h
 
