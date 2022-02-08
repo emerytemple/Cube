@@ -4,7 +4,6 @@
 CMakeFiles/cube.dir/src/main.c.o: ../src/event.h
 CMakeFiles/cube.dir/src/main.c.o: ../src/input.h
 CMakeFiles/cube.dir/src/main.c.o: ../src/main.c
-CMakeFiles/cube.dir/src/main.c.o: ../src/render.h
 CMakeFiles/cube.dir/src/main.c.o: /usr/include/SDL2/SDL.h
 CMakeFiles/cube.dir/src/main.c.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/cube.dir/src/main.c.o: /usr/include/SDL2/SDL_atomic.h

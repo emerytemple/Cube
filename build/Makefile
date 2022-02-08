@@ -124,19 +124,6 @@ cube/fast:
 .PHONY : cube/fast
 
 #=============================================================================
-# Target rules for targets named render
-
-# Build rule for target.
-render: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 render
-.PHONY : render
-
-# fast build rule for target.
-render/fast:
-	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/build
-.PHONY : render/fast
-
-#=============================================================================
 # Target rules for targets named input
 
 # Build rule for target.
@@ -243,33 +230,6 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/render.o: src/render.c.o
-
-.PHONY : src/render.o
-
-# target to build an object file
-src/render.c.o:
-	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.o
-.PHONY : src/render.c.o
-
-src/render.i: src/render.c.i
-
-.PHONY : src/render.i
-
-# target to preprocess a source file
-src/render.c.i:
-	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.i
-.PHONY : src/render.c.i
-
-src/render.s: src/render.c.s
-
-.PHONY : src/render.s
-
-# target to generate assembly for a file
-src/render.c.s:
-	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.s
-.PHONY : src/render.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -278,7 +238,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... cube"
-	@echo "... render"
 	@echo "... rebuild_cache"
 	@echo "... input"
 	@echo "... event"
@@ -291,9 +250,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/render.o"
-	@echo "... src/render.i"
-	@echo "... src/render.s"
 .PHONY : help
 
 

@@ -3,13 +3,14 @@
 
 #include "event.h"
 
-void handle_event(SDL_Event *event, bool *quit, struct RawInput *input)
+void handle_event(SDL_Event *event, bool *quit)
 {
 	switch(event->type)
 	{
 		case SDL_QUIT:
 			*quit = true;
 			break;
+#if 0
 		case SDL_KEYDOWN:
 		case SDL_KEYUP:
 			handle_keyboard_event(event->key);
@@ -38,11 +39,13 @@ void handle_event(SDL_Event *event, bool *quit, struct RawInput *input)
 		case SDL_MOUSEWHEEL:
 			handle_mouse_wheel_event(event->wheel);
 			break;
+#endif
 		default:
 			break;
 	}
 }
 
+#if 0
 void handle_keyboard_event(SDL_KeyboardEvent key)
 {
 	printf("type = %s, state = %s, repeat = %s\n",
@@ -125,7 +128,7 @@ void handle_mouse_wheel_event(SDL_MouseWheelEvent wheel)
 	printf("x = %d, y = %d\n", wheel.x, wheel.y);
 }
 
-
+#endif
 
 
 

@@ -13,28 +13,16 @@
 
 #include "event.h"
 #include "input.h"
-#include "render.h"
+// #include "render.h"
+
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
-	SDL_Joystick *controller = NULL;
-
-	struct RawInput raw_input = {
-		.joy_axis_value[0] = 0,
-		.joy_axis_value[1] = 0,
-		.joy_axis_value[2] = -1,
-		.joy_axis_value[3] = 0,
-		.joy_axis_value[4] = 0,
-		.joy_axis_value[5] = -1,
-
-		.joy_hat_value = 0,
-	};
-	print_input(&raw_input);
-
 	int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-
 	if(success != 0) printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-	if(SDL_NumJoysticks() < 1) puts("Warning: No Joysticks connected!\n");
+
+	create_joysticks();
 
 	SDL_bool hint = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 	if(!hint) printf("Warning: Linear texture filtering not enabled!");
@@ -51,9 +39,6 @@ int main(int argc, char *argv[])
 
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	controller = SDL_JoystickOpen(0);
-	if(controller == NULL) printf("Warning: Unable to open game controller! SDL_Error: %s\n", SDL_GetError());
-
 	bool quit = false;
 	SDL_Event event;
 
@@ -61,14 +46,14 @@ int main(int argc, char *argv[])
 	{
 		while(SDL_PollEvent(&event))
 		{
-			handle_event(&event, &quit, &raw_input);
+			handle_event(&event, &quit);
 		}
 
-		render(renderer, &raw_input);
+		// poll_input(joystick);
+		// render(renderer, &raw_input);
 	}
 
-	SDL_JoystickClose(controller);
-	controller = NULL;
+	destroy_joysticks();
 
 	// SDL_DestroyRenderer(renderer);
 	renderer = NULL;
@@ -80,8 +65,6 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
-
 
 
 
