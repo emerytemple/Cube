@@ -3,6 +3,7 @@
 
 CMakeFiles/input.dir/src/input.c.o: ../src/input.c
 CMakeFiles/input.dir/src/input.c.o: ../src/input.h
+CMakeFiles/input.dir/src/input.c.o: ../src/virtual_joystick.h
 CMakeFiles/input.dir/src/input.c.o: /usr/include/SDL2/SDL.h
 CMakeFiles/input.dir/src/input.c.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/input.dir/src/input.c.o: /usr/include/SDL2/SDL_atomic.h

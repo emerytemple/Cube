@@ -1,5 +1,6 @@
 /home/emery/cube/build/CMakeFiles/edit_cache.dir
 /home/emery/cube/build/CMakeFiles/cube.dir
+/home/emery/cube/build/CMakeFiles/virtualjoystick.dir
 /home/emery/cube/build/CMakeFiles/rebuild_cache.dir
 /home/emery/cube/build/CMakeFiles/input.dir
 /home/emery/cube/build/CMakeFiles/event.dir

@@ -19,8 +19,10 @@
 
 int main(int argc, char *argv[])
 {
-	int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
+	int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER);
 	if(success != 0) printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+
+	int device_index = SDL_JoystickAttachVirtual(SDL_JOYSTICK_TYPE_GAMECONTROLLER, naxes, nbuttons, nhats);
 
 	create_joysticks();
 

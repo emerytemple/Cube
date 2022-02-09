@@ -4,7 +4,8 @@
 
 #include <SDL.h>
 
-#define MAX_JOYSTICKS 5 // 4 joysticks + 1 keyboard as virtual joystick
+#define MAX_JOYSTICKS 4 // 3 joysticks + 1 keyboard as virtual joystick
+#define MAX_CONTROLLERS 4
 #define MAX_JOYSTICK_AXES 6 // (2 axes * 2 thumbsticks) + 2 triggers
 #define MAX_JOYSTICK_BUTTONS 11
 #define JOYSTICK_HAT_INDEX 0 // only one hat per joystick
@@ -25,7 +26,10 @@ struct RawJoystick {
 
 struct Joysticks {
 	int num_joysticks;
-	SDL_Joystick *joystick[MAX_JOYSTICKS];
+	SDL_Joystick *joystick_handle[MAX_JOYSTICKS];
+
+	int num_controllers;
+	SDL_GameController *controller_handle[MAX_CONTROLLERS];
 
 	struct RawJoystick raw_joystick[MAX_JOYSTICKS];
 };

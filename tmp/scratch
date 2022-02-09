@@ -1,5 +1,23 @@
 
 
+
+
+
+scancode is physical layout of keyboard
+scandode in sdl is where they key would be on a qwerty keyboard (so qwerty layout would return q keycode and q scancode. azerty would return q scancode and a keycode)
+keycode is mapped key based on scancode 
+
+joystick is any input device (controller, wheel, flight stick, guitar, etc)
+keyboard is virtual joystick
+controller is xbox like controller
+
+
+
+
+
+
+
+
 event
 	+	more direct
 	-	can get clogged up if lagging

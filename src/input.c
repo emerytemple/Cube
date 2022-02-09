@@ -1,6 +1,8 @@
 
 #include "input.h"
 
+#include "virtual_joystick.h"
+
 void create_joysticks()
 {
 	struct Joysticks joysticks;
@@ -10,12 +12,29 @@ void create_joysticks()
 
 	for(int i = 0; i < joysticks.num_joysticks; i++)
 	{
-		joysticks.joystick[i] = SDL_JoystickOpen(i);
-		if(joysticks.joystick[i] == NULL) printf("Warning: Unable to open game joystick! SDL_Error: %s\n", SDL_GetError());
+		joysticks.joystick_handle[i] = SDL_JoystickOpen(i);
+		if(joysticks.joystick_handle[i] == NULL) printf("Warning: Unable to open game joystick! SDL_Error: %s\n", SDL_GetError());
 
-		initialize_raw_joystick(i, joysticks.joystick[i], &joysticks.raw_joystick[i]);
+		initialize_raw_joystick(i, joysticks.joystick_handle[i], &joysticks.raw_joystick[i]);
 		print_raw_joystick(&joysticks.raw_joystick[i]);
+
+		/*
+		if(joysticks->num_controllers > MAX_CONTROLLERS) break;
+
+		if(SDL_IsGameController(i))
+		{
+			printf("Index %i is a compatible controller, named %s\n", i, SDL_GameControllerNameForIndex(i));
+			SDL_GameController *ctrl = SDL_GameControllerOpen(i);
+			char *mapping = SDL_GameControllerMapping(ctrl);
+			printf("Controller %i is mapped as %s\n", i, mapping);
+		}
+		*/
 	}
+
+	int device_index = create_virtual_joystick();
+	printf("Device index = %d\n", device_index);
+	joysticks.joystick_handle[device_index] = SDL_JoystickOpen(device_index);
+	print_raw_joystick(&joysticks.raw_joystick[device_index]);
 
 	SDL_JoystickEventState(SDL_IGNORE);
 	printf("Joystick event polling is %s\n", SDL_JoystickEventState(SDL_QUERY) ? "enabled" : "disabled");

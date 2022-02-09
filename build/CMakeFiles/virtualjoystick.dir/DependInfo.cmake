@@ -4,9 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/emery/cube/src/main.c" "/home/emery/cube/build/CMakeFiles/cube.dir/src/main.c.o"
+  "/home/emery/cube/src/virtual_joystick.c" "/home/emery/cube/build/CMakeFiles/virtualjoystick.dir/src/virtual_joystick.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_C
+  "virtualjoystick_EXPORTS"
+  )
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
@@ -16,9 +21,6 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/emery/cube/build/CMakeFiles/event.dir/DependInfo.cmake"
-  "/home/emery/cube/build/CMakeFiles/input.dir/DependInfo.cmake"
-  "/home/emery/cube/build/CMakeFiles/virtualjoystick.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

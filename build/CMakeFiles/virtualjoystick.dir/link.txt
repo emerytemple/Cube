@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libvirtualjoystick.so -o ../lib/libvirtualjoystick.so CMakeFiles/virtualjoystick.dir/src/virtual_joystick.c.o 
