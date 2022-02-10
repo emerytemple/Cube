@@ -1,7 +1,7 @@
 
 #include "input.h"
 
-#include "virtual_joystick.h"
+// #include "virtual_joystick.h"
 
 void create_joysticks()
 {
@@ -31,11 +31,12 @@ void create_joysticks()
 		*/
 	}
 
+#if 0
 	int device_index = create_virtual_joystick();
 	printf("Device index = %d\n", device_index);
 	joysticks.joystick_handle[device_index] = SDL_JoystickOpen(device_index);
 	print_raw_joystick(&joysticks.raw_joystick[device_index]);
-
+#endif
 	SDL_JoystickEventState(SDL_IGNORE);
 	printf("Joystick event polling is %s\n", SDL_JoystickEventState(SDL_QUERY) ? "enabled" : "disabled");
 }
@@ -101,6 +102,58 @@ void destroy_joysticks()
 	// SDL_JoystickClose(joystick);
 	// joystick = NULL;
 }
+
+void get_keyboard_input()
+{
+	struct KeyboardMapping keymap = {
+		.up = SDLK_u,
+		.down = SDLK_d,
+		.left = SDLK_l,
+		.right = SDLK_r,
+	};
+
+	struct Action action;
+
+	const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+	action.up = state[SDL_GetScancodeFromKey(keymap.up)];
+	action.down = state[SDL_GetScancodeFromKey(keymap.down)];
+	action.left = state[SDL_GetScancodeFromKey(keymap.left)];
+	action.right = state[SDL_GetScancodeFromKey(keymap.right)];
+
+	printf("up = %s, ", action.up ? "true" : "false");
+	printf("down = %s, ", action.down ? "true" : "false");
+	printf("left = %s, ", action.left ? "true" : "false");
+	printf("right = %s\n", action.right ? "true" : "false");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

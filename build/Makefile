@@ -124,19 +124,6 @@ cube/fast:
 .PHONY : cube/fast
 
 #=============================================================================
-# Target rules for targets named virtualjoystick
-
-# Build rule for target.
-virtualjoystick: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 virtualjoystick
-.PHONY : virtualjoystick
-
-# fast build rule for target.
-virtualjoystick/fast:
-	$(MAKE) -f CMakeFiles/virtualjoystick.dir/build.make CMakeFiles/virtualjoystick.dir/build
-.PHONY : virtualjoystick/fast
-
-#=============================================================================
 # Target rules for targets named input
 
 # Build rule for target.
@@ -243,33 +230,6 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/virtual_joystick.o: src/virtual_joystick.c.o
-
-.PHONY : src/virtual_joystick.o
-
-# target to build an object file
-src/virtual_joystick.c.o:
-	$(MAKE) -f CMakeFiles/virtualjoystick.dir/build.make CMakeFiles/virtualjoystick.dir/src/virtual_joystick.c.o
-.PHONY : src/virtual_joystick.c.o
-
-src/virtual_joystick.i: src/virtual_joystick.c.i
-
-.PHONY : src/virtual_joystick.i
-
-# target to preprocess a source file
-src/virtual_joystick.c.i:
-	$(MAKE) -f CMakeFiles/virtualjoystick.dir/build.make CMakeFiles/virtualjoystick.dir/src/virtual_joystick.c.i
-.PHONY : src/virtual_joystick.c.i
-
-src/virtual_joystick.s: src/virtual_joystick.c.s
-
-.PHONY : src/virtual_joystick.s
-
-# target to generate assembly for a file
-src/virtual_joystick.c.s:
-	$(MAKE) -f CMakeFiles/virtualjoystick.dir/build.make CMakeFiles/virtualjoystick.dir/src/virtual_joystick.c.s
-.PHONY : src/virtual_joystick.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -278,7 +238,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... cube"
-	@echo "... virtualjoystick"
 	@echo "... rebuild_cache"
 	@echo "... input"
 	@echo "... event"
@@ -291,9 +250,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/virtual_joystick.o"
-	@echo "... src/virtual_joystick.i"
-	@echo "... src/virtual_joystick.s"
 .PHONY : help
 
 

@@ -23,6 +23,8 @@ input.h
 /home/emery/cube/src/input.h
 SDL.h
 -
+stdbool.h
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

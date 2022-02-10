@@ -4,7 +4,6 @@
 CMakeFiles/input.dir/src/input.c.o
  /home/emery/cube/src/input.c
  /home/emery/cube/src/input.h
- /home/emery/cube/src/virtual_joystick.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h

@@ -81,7 +81,6 @@ cube_EXTERNAL_OBJECTS =
 ../bin/cube: CMakeFiles/cube.dir/build.make
 ../bin/cube: ../lib/libevent.so
 ../bin/cube: ../lib/libinput.so
-../bin/cube: ../lib/libvirtualjoystick.so
 ../bin/cube: CMakeFiles/cube.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emery/cube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../bin/cube"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cube.dir/link.txt --verbose=$(VERBOSE)
