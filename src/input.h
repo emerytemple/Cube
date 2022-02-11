@@ -11,7 +11,7 @@
 #define MAX_JOYSTICK_BUTTONS 11
 #define JOYSTICK_HAT_INDEX 0 // only one hat per joystick
 
-enum input_actions {
+enum input_actions { // currently not used. for later when we move to using bits
 	ACTION_UP,
 	ACTION_DOWN,
 	ACTION_LEFT,
@@ -66,5 +66,6 @@ void print_raw_joystick(struct RawJoystick *raw_joystick);
 void destroy_joysticks();
 
 void get_keyboard_input();
+void get_mouse_input();
 
 #endif

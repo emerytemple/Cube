@@ -121,13 +121,28 @@ void get_keyboard_input()
 	action.left = state[SDL_GetScancodeFromKey(keymap.left)];
 	action.right = state[SDL_GetScancodeFromKey(keymap.right)];
 
+#if 0
 	printf("up = %s, ", action.up ? "true" : "false");
 	printf("down = %s, ", action.down ? "true" : "false");
 	printf("left = %s, ", action.left ? "true" : "false");
 	printf("right = %s\n", action.right ? "true" : "false");
+#endif
 }
 
+void get_mouse_input()
+{
+	int x, y;
+	Uint32 buttons = SDL_GetMouseState(&x, &y);
 
+	// wheel up and wheel down are events, not states. need to be processed in event handler
+
+	printf("mouse at (%d, %d),  ", x, y);
+	printf("left = %s, ", buttons & SDL_BUTTON_LMASK ? "true" : "false");
+	printf("middle = %s, ", buttons & SDL_BUTTON_MMASK ? "true" : "false");
+	printf("right = %s, ", buttons & SDL_BUTTON_RMASK ? "true" : "false");
+	printf("x1 = %s, ", buttons & SDL_BUTTON_X1MASK ? "true" : "false");
+	printf("x2 = %s\n", buttons & SDL_BUTTON_X2MASK ? "true" : "false");
+}
 
 
 

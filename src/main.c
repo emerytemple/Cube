@@ -49,7 +49,9 @@ int main(int argc, char *argv[])
 			handle_event(&event, &quit);
 		}
 
-		get_keyboard_input();
+		SDL_PumpEvents();
+		get_mouse_input();
+		// get_keyboard_input();
 		// poll_input(joystick);
 		// render(renderer, &raw_input);
 	}
