@@ -134,14 +134,17 @@ void get_mouse_input()
 	int x, y;
 	Uint32 buttons = SDL_GetMouseState(&x, &y);
 
-	// wheel up and wheel down are events, not states. need to be processed in event handler
+	// wheel up and wheel down are events, not states
+	// process in event handler if needed, but will not be used here
 
+#if 0
 	printf("mouse at (%d, %d),  ", x, y);
 	printf("left = %s, ", buttons & SDL_BUTTON_LMASK ? "true" : "false");
 	printf("middle = %s, ", buttons & SDL_BUTTON_MMASK ? "true" : "false");
 	printf("right = %s, ", buttons & SDL_BUTTON_RMASK ? "true" : "false");
 	printf("x1 = %s, ", buttons & SDL_BUTTON_X1MASK ? "true" : "false");
 	printf("x2 = %s\n", buttons & SDL_BUTTON_X2MASK ? "true" : "false");
+#endif
 }
 
 

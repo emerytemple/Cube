@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	const char *title = "Cube";
 	int screen_width = 800;
 	int screen_height = 600;
-	Uint32 window_flags = 0;
+	Uint32 window_flags = SDL_WINDOW_RESIZABLE;
 	SDL_Window *window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, window_flags);
 	if(window == NULL) printf("SDL window could not be created! SDL_Error: %s\n", SDL_GetError());
 
