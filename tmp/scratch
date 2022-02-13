@@ -2,14 +2,142 @@
 
 
 
+#define MAX_JOYSTICKS 4
+#define MAX_CONTROLLERS 4
+#define MAX_JOYSTICK_AXES 6 // (2 axes * 2 thumbsticks) + 2 triggers
+#define MAX_JOYSTICK_BUTTONS 11
+#define JOYSTICK_HAT_INDEX 0 // only one hat per joystick
+
+enum input_actions { // currently not used. for later when we move to using bits
+	ACTION_UP,
+	ACTION_DOWN,
+	ACTION_LEFT,
+	ACTION_RIGHT,
+	ACTION_A,
+	ACTION_B,
+	ACTION_X,
+	ACTION_Y,
+	ACTION_LB,
+	ACTION_RB,
+	ACTION_LT,
+	ACTION_RT,
+	ACTION_START,
+	ACTION_SELECT
+};
+
+struct RawJoystick {
+	int index;
+	char *name;
+
+	int num_buttons;
+	int num_axes;
+	int num_balls;
+	int num_hats;
+
+	Sint16 axis[MAX_JOYSTICK_AXES];
+	Uint8 hat;
+	Uint8 button[MAX_JOYSTICK_BUTTONS];
+};
+
+void initialize_raw_joystick(int index, SDL_Joystick *joystick, struct RawJoystick *raw_joystick);
+void print_raw_joystick(struct RawJoystick *raw_joystick);
+
+
+void initialize_raw_joystick(int index, SDL_Joystick *joystick, struct RawJoystick *raw_joystick)
+{
+	raw_joystick->index = index;
+	raw_joystick->name = (char *)SDL_JoystickName(joystick);
+
+	raw_joystick->num_buttons = SDL_JoystickNumButtons(joystick);
+	if(raw_joystick->num_buttons > MAX_JOYSTICK_BUTTONS) printf("Joystick[%d] has %d buttons, which is more than the max of %d\n", index, raw_joystick->num_buttons, MAX_JOYSTICK_BUTTONS);
+
+	raw_joystick->num_axes = SDL_JoystickNumAxes(joystick);
+	if(raw_joystick->num_axes > MAX_JOYSTICK_AXES) printf("Joystick[%d] has %d axes, which is more than the max of %d\n", index, raw_joystick->num_axes, MAX_JOYSTICK_AXES);
+
+	raw_joystick->num_balls = SDL_JoystickNumBalls(joystick);
+	raw_joystick->num_hats = SDL_JoystickNumHats(joystick);
+
+	Sint16 state;
+	for(int i = 0; i < raw_joystick->num_axes; i++)
+	{
+		SDL_JoystickGetAxisInitialState(joystick, i, &state);
+		raw_joystick->axis[i] = state;
+	}
+
+	Uint8 button;
+	for(int i = 0; i < raw_joystick->num_buttons; i++)
+	{
+		raw_joystick->button[i] = SDL_JoystickGetButton(joystick, i);
+	}
+
+	raw_joystick->hat = SDL_JoystickGetHat(joystick, JOYSTICK_HAT_INDEX); // 0 for only one hat
+}
+
+void print_raw_joystick(struct RawJoystick *raw_joystick)
+{
+	printf("index = %d, name = %s\n", raw_joystick->index, raw_joystick->name);
+
+	printf("num buttons = %d\n", raw_joystick->num_buttons);
+	for(int i = 0; i < raw_joystick->num_buttons; i++)
+	{
+		printf("%d", raw_joystick->button[i]);
+	}
+	printf("\n");
+
+	printf("num axes = %d\n", raw_joystick->num_axes);
+	for(int i = 0; i < raw_joystick->num_axes; i++)
+	{
+		printf("axes %d = %d,  ", i, raw_joystick->axis[i]);
+	}
+	printf("\n");
+
+	printf("num balls = %d\n", raw_joystick->num_balls);
+
+	printf("num hats = %d\n", raw_joystick->num_hats);
+	printf("hat = %d\n", raw_joystick->hat);
+
+	// system("clear");
+}
+
+
+
+		// if(joysticks.num_controllers > MAX_CONTROLLERS) break;
+
+
+
+/*
+		if(SDL_IsGameController(i))
+		{
+			printf("Index %i is a compatible controller, named %s\n", i, SDL_GameControllerNameForIndex(i));
+			SDL_GameController *ctrl = SDL_GameControllerOpen(i);
+			char *mapping = SDL_GameControllerMapping(ctrl);
+			// printf("Controller %i is mapped as %s\n", i, mapping);
+		}
+*/
+
+
+
+
+device_index
+joystick_handle
+instanceID
+player_index
+deviceGUID
+productID
+productVersion
+serialNumber
+type
+vendor
 
 scancode is physical layout of keyboard
 scandode in sdl is where they key would be on a qwerty keyboard (so qwerty layout would return q keycode and q scancode. azerty would return q scancode and a keycode)
 keycode is mapped key based on scancode 
 
 joystick is any input device (controller, wheel, flight stick, guitar, etc)
-keyboard is virtual joystick
+keyboard can be virtual joystick
 controller is xbox like controller
+xinput max controllers is 4
+steam virtual controller added for xinput devices
 
 
 

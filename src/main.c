@@ -22,7 +22,16 @@ int main(int argc, char *argv[])
 	int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER);
 	if(success != 0) printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 
-	create_joysticks();
+	struct Joysticks joysticks;
+	joysticks.num_joysticks = 0;
+	joysticks.num_controllers = 0;
+	for(int i = 0; i < 10; i++)
+	{
+		joysticks.joystick_handle[i] = NULL;
+		joysticks.controller_handle[i] = NULL;
+	}
+
+	// create_joysticks(&joysticks);
 
 	SDL_bool hint = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 	if(!hint) printf("Warning: Linear texture filtering not enabled!");
@@ -46,17 +55,17 @@ int main(int argc, char *argv[])
 	{
 		while(SDL_PollEvent(&event))
 		{
-			handle_event(&event, &quit);
+			handle_event(&event, &quit, &joysticks);
 		}
 
 		SDL_PumpEvents();
-		get_mouse_input();
+		// get_mouse_input();
 		// get_keyboard_input();
 		// poll_input(joystick);
 		// render(renderer, &raw_input);
 	}
 
-	destroy_joysticks();
+	// destroy_joysticks();
 
 	// SDL_DestroyRenderer(renderer);
 	renderer = NULL;

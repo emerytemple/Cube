@@ -3,15 +3,67 @@
 
 #include "event.h"
 
-void handle_event(SDL_Event *event, bool *quit)
+void handle_event(SDL_Event *event, bool *quit, struct Joysticks *joysticks)
 {
 	switch(event->type)
 	{
+		case SDL_CONTROLLERDEVICEADDED:
+		case SDL_CONTROLLERDEVICEREMOVED:
+		case SDL_CONTROLLERDEVICEREMAPPED:
+			// printf("controller event\n");
+			handle_controllerdevice_event(event->cdevice, joysticks);
+			break;
+		case SDL_JOYDEVICEADDED:
+		case SDL_JOYDEVICEREMOVED:
+			// printf("joystick event\n");
+			handle_joydevice_event(event->jdevice, joysticks);
+			break;
 		case SDL_QUIT:
 			*quit = true;
 			break;
 		case SDL_WINDOWEVENT:
-			handle_window_event(event->window);
+			// handle_window_event(event->window);
+			break;
+		default:
+			break;
+	}
+}
+
+void handle_controllerdevice_event(SDL_ControllerDeviceEvent cdevice, struct Joysticks *joysticks)
+{
+	switch(cdevice.type)
+	{
+		case SDL_CONTROLLERDEVICEADDED:
+			// printf("Controller %d added\n", cdevice.which);
+			// add_controller(joysticks, cdevice.which);
+			// print_input(joysticks);
+			break;
+		case SDL_CONTROLLERDEVICEREMOVED:
+			// printf("Controller %d removed\n", cdevice.which);
+			// remove_controller(joysticks, cdevice.which);
+			// print_input(joysticks);
+			break;
+		case SDL_CONTROLLERDEVICEREMAPPED:
+			printf("Controller %d remapped\n", cdevice.which);
+			break;
+		default:
+			break;
+	}
+}
+
+void handle_joydevice_event(SDL_JoyDeviceEvent jdevice, struct Joysticks *joysticks)
+{
+	switch(jdevice.type)
+	{
+		case SDL_JOYDEVICEADDED:
+			printf("Joystick %d added\n", jdevice.which);
+			add_joystick(joysticks, jdevice.which);
+			print_input2(joysticks);
+			break;
+		case SDL_JOYDEVICEREMOVED:
+			printf("Joystick %d removed\n", jdevice.which);
+			// remove_joystick(joysticks, jdevice.which);
+			print_input(joysticks);
 			break;
 		default:
 			break;
@@ -81,8 +133,10 @@ void handle_window_event(SDL_WindowEvent window)
 	}
 }
 
+void print_controller()
+{
 
-
+}
 
 
 
