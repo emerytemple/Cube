@@ -62,8 +62,8 @@ void handle_joydevice_event(SDL_JoyDeviceEvent jdevice, struct Joysticks *joysti
 			break;
 		case SDL_JOYDEVICEREMOVED:
 			printf("Joystick %d removed\n", jdevice.which);
-			// remove_joystick(joysticks, jdevice.which);
-			print_input(joysticks);
+			remove_joystick(joysticks, jdevice.which);
+			print_input2(joysticks);
 			break;
 		default:
 			break;

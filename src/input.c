@@ -8,42 +8,47 @@ void add_joystick(struct Joysticks *joysticks, Sint32 device_index)
 	joysticks->num_joysticks = SDL_NumJoysticks();
 
 	joysticks->joystick_handle[device_index] = SDL_JoystickOpen(device_index);
-	joysticks->joystick_guid[device_index] = SDL_JoystickGetDeviceGUID(device_index);
+	joysticks->is_joystick_open[device_index] = SDL_JoystickGetAttached(joysticks->joystick_handle[device_index]);
+
 	joysticks->joystick_instance_id[device_index] = SDL_JoystickGetDeviceInstanceID(device_index);
+	joysticks->joystick_name[device_index] = (char *)SDL_JoystickNameForIndex(device_index);
+
+	/*
+	joysticks->joystick_guid[device_index] = SDL_JoystickGetDeviceGUID(device_index);
 	joysticks->joystick_player_index[device_index] = SDL_JoystickGetDevicePlayerIndex(device_index);
 	joysticks->joystick_product[device_index] = SDL_JoystickGetDeviceProduct(device_index);
 	joysticks->joystick_product_version[device_index] = SDL_JoystickGetDeviceProductVersion(device_index);
 	joysticks->joystick_type[device_index] = SDL_JoystickGetDeviceType(device_index);
 	joysticks->joystick_vendor[device_index] = SDL_JoystickGetDeviceVendor(device_index);
-	joysticks->joystick_name[device_index] = (char *)SDL_JoystickNameForIndex(device_index);
 
 	// joysticks->joystick_serial_number[device_index] = (char *)SDL_JoystickGetSerial(joysticks->joystick_handle[device_index]);
-
-
-/*
-    SDL_JOYSTICK_TYPE_UNKNOWN,
-    SDL_JOYSTICK_TYPE_GAMECONTROLLER,
-    SDL_JOYSTICK_TYPE_WHEEL,
-    SDL_JOYSTICK_TYPE_ARCADE_STICK,
-    SDL_JOYSTICK_TYPE_FLIGHT_STICK,
-    SDL_JOYSTICK_TYPE_DANCE_PAD,
-    SDL_JOYSTICK_TYPE_GUITAR,
-    SDL_JOYSTICK_TYPE_DRUM_KIT,
-    SDL_JOYSTICK_TYPE_ARCADE_PAD,
-    SDL_JOYSTICK_TYPE_THROTTLE
 */
 }
 
-void remove_joystick(struct Joysticks *joysticks, Sint32 device_index)
+void remove_joystick(struct Joysticks *joysticks, Sint32 instance_id)
 {
-		if(!SDL_JoystickGetAttached(joysticks->joystick_handle[device_index]))
+	int device_index;
+	for(int i = 0; i < joysticks->num_joysticks; i++)
+	{
+		if(joysticks->joystick_instance_id[i] == instance_id)
 		{
-			printf("error in joystick remove. joystick is not attached\n");
-			return;
+			device_index = i;
+			break;
 		}
+	}
 
+	if(SDL_JoystickGetAttached(joysticks->joystick_handle[device_index]))
+	{
 		SDL_JoystickClose(joysticks->joystick_handle[device_index]);
-		joysticks->joystick_handle[device_index] = NULL;
+	}	
+
+	joysticks->num_joysticks = SDL_NumJoysticks();
+	joysticks->joystick_handle[device_index] = NULL;
+
+	joysticks->is_joystick_open[device_index] = SDL_JoystickGetAttached(joysticks->joystick_handle[device_index]);
+
+	joysticks->joystick_instance_id[device_index] = -1;
+	joysticks->joystick_name[device_index] = "_";
 }
 
 void add_controller(struct Joysticks *joysticks, Sint32 index)
@@ -106,16 +111,20 @@ void print_input(struct Joysticks *joysticks)
 
 void print_input2(struct Joysticks *joysticks)
 {
-	for(int device_index = 0; device_index < joysticks->num_joysticks; device_index++)
-	{
+	printf("\tnum joysticks = %d %d\n", joysticks->num_joysticks, SDL_NumJoysticks());
+	for(int device_index = 0; device_index < 5; device_index++)
+	{\
 		printf("\tindex = %d, ", device_index);
+		printf("state = %s, ", joysticks->is_joystick_open[device_index] ? "open" : "closed");
 		printf("handle = %p, ", joysticks->joystick_handle[device_index]);
+		printf("id = %d, ", joysticks->joystick_instance_id[device_index]);
+		printf("name = %s\n", joysticks->joystick_name[device_index]);
 
+/*
 		char *guid;
 		SDL_JoystickGetGUIDString(joysticks->joystick_guid[device_index], guid, sizeof(joysticks->joystick_guid[device_index]));
 		printf("guid = %s, ", guid);
 
-		printf("id = %d, ", joysticks->joystick_instance_id[device_index]);
 		printf("player_id = %d, ", joysticks->joystick_player_index[device_index]);
 		printf("product = %d, ", joysticks->joystick_product[device_index]);
 		printf("version = %d, ", joysticks->joystick_product_version[device_index]);
@@ -159,8 +168,7 @@ void print_input2(struct Joysticks *joysticks)
 		printf(", ");
 
 		printf("vendor = %d, ", joysticks->joystick_vendor[device_index]);
-		printf("name = %s\n", joysticks->joystick_name[device_index]);
-
+*/
 		// joysticks->joystick_serial_number[device_index] = (char *)SDL_JoystickGetSerial(joysticks->joystick_handle[device_index]);
 	}
 }

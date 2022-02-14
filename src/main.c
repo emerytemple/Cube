@@ -28,7 +28,9 @@ int main(int argc, char *argv[])
 	for(int i = 0; i < 10; i++)
 	{
 		joysticks.joystick_handle[i] = NULL;
-		joysticks.controller_handle[i] = NULL;
+		joysticks.joystick_instance_id[i] = -1;
+		joysticks.joystick_name[i] = "_";
+		// joysticks.controller_handle[i] = NULL;
 	}
 
 	// create_joysticks(&joysticks);

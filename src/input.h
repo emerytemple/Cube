@@ -17,6 +17,8 @@ struct Joysticks {
 	int num_joysticks;
 	SDL_Joystick *joystick_handle[10];
 
+	SDL_bool is_joystick_open[10];
+
 	SDL_JoystickGUID joystick_guid[10];
 	SDL_JoystickID joystick_instance_id[10];
 	int joystick_player_index[10];
@@ -33,8 +35,8 @@ struct Joysticks {
 	SDL_GameController *controller_handle[10];
 };
 
-void add_joystick(struct Joysticks *joysticks, Sint32 index);
-void remove_joystick(struct Joysticks *joysticks, Sint32 index);
+void add_joystick(struct Joysticks *joysticks, Sint32 device_index);
+void remove_joystick(struct Joysticks *joysticks, Sint32 instance_id);
 
 void add_controller(struct Joysticks *joysticks, Sint32 index);
 void remove_controller(struct Joysticks *joysticks, Sint32 index);
