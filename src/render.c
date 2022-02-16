@@ -1,7 +1,7 @@
 
 #include "render.h"
 
-void render(SDL_Renderer *renderer, struct RawInput *input)
+void render(SDL_Renderer *renderer)
 {
 	// clear screen
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
@@ -21,9 +21,9 @@ void render(SDL_Renderer *renderer, struct RawInput *input)
 
 	// box 1 raw value
 	SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0xFF);
-	double xvalue = (input->joy_axis_value[0]) ? input->joy_axis_value[0]/32768.0: input->joy_axis_value[0]/32767.0;
-	double yvalue = (input->joy_axis_value[1]) ? input->joy_axis_value[1]/32768.0: input->joy_axis_value[1]/32767.0;
-	SDL_RenderDrawRect(renderer, &(SDL_Rect) { 105.0*(1.0 + xvalue), 105.0*(1.0 + yvalue), 10, 10 });
+	// double xvalue = (input->joy_axis_value[0]) ? input->joy_axis_value[0]/32768.0: input->joy_axis_value[0]/32767.0;
+	// double yvalue = (input->joy_axis_value[1]) ? input->joy_axis_value[1]/32768.0: input->joy_axis_value[1]/32767.0;
+	// SDL_RenderDrawRect(renderer, &(SDL_Rect) { 105.0*(1.0 + xvalue), 105.0*(1.0 + yvalue), 10, 10 });
 
 
 	SDL_RenderPresent(renderer);

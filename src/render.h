@@ -6,7 +6,7 @@
 
 #include "input.h"
 
-void render(SDL_Renderer *renderer, struct RawInput *input);
+void render(SDL_Renderer *renderer);
 void draw_circle(SDL_Renderer * renderer, int32_t centreX, int32_t centreY, int32_t radius);
 
 #endif

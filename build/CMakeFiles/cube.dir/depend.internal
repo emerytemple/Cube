@@ -5,6 +5,7 @@ CMakeFiles/cube.dir/src/main.c.o
  /home/emery/cube/src/event.h
  /home/emery/cube/src/input.h
  /home/emery/cube/src/main.c
+ /home/emery/cube/src/render.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h

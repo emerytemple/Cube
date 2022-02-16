@@ -16,9 +16,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 add_library(event SHARED ${SRC_DIR}/event.c)
 add_library(input SHARED ${SRC_DIR}/input.c)
-# add_library(render SHARED ${SRC_DIR}/render.c)
+add_library(render SHARED ${SRC_DIR}/render.c)
 
 add_executable(${PROJECT_NAME} ${SRC_DIR}/main.c)
+# add_executable(${PROJECT_NAME} ${SRC_DIR}/test.c)
 
 target_link_libraries(
 	${PROJECT_NAME}
@@ -26,5 +27,5 @@ target_link_libraries(
 	${SDL2_LIBRARIES}
 	event
 	input
-# 	render
+	render
 )

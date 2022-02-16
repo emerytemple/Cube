@@ -43,6 +43,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cube.dir/DependInfo.cmake"
+  "CMakeFiles/render.dir/DependInfo.cmake"
   "CMakeFiles/input.dir/DependInfo.cmake"
   "CMakeFiles/event.dir/DependInfo.cmake"
   )

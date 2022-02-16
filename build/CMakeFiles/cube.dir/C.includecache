@@ -11,8 +11,6 @@ SDL.h
 -
 stdbool.h
 -
-input.h
-/home/emery/cube/src/input.h
 
 /home/emery/cube/src/input.h
 SDL.h
@@ -31,8 +29,16 @@ event.h
 /home/emery/cube/src/event.h
 input.h
 /home/emery/cube/src/input.h
+render.h
+/home/emery/cube/src/render.h
 stdlib.h
 -
+
+/home/emery/cube/src/render.h
+SDL.h
+-
+input.h
+/home/emery/cube/src/input.h
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/emery/cube/build
 
 # The main recursive "all" target.
 all: CMakeFiles/cube.dir/all
+all: CMakeFiles/render.dir/all
 all: CMakeFiles/input.dir/all
 all: CMakeFiles/event.dir/all
 
@@ -66,6 +67,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/cube.dir/clean
+clean: CMakeFiles/render.dir/clean
 clean: CMakeFiles/input.dir/clean
 clean: CMakeFiles/event.dir/clean
 
@@ -75,6 +77,7 @@ clean: CMakeFiles/event.dir/clean
 # Target rules for target CMakeFiles/cube.dir
 
 # All Build rule for target.
+CMakeFiles/cube.dir/all: CMakeFiles/render.dir/all
 CMakeFiles/cube.dir/all: CMakeFiles/input.dir/all
 CMakeFiles/cube.dir/all: CMakeFiles/event.dir/all
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/depend
@@ -84,7 +87,7 @@ CMakeFiles/cube.dir/all: CMakeFiles/event.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cube.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emery/cube/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emery/cube/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cube.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/emery/cube/build/CMakeFiles 0
 .PHONY : CMakeFiles/cube.dir/rule
@@ -98,6 +101,33 @@ cube: CMakeFiles/cube.dir/rule
 CMakeFiles/cube.dir/clean:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/clean
 .PHONY : CMakeFiles/cube.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/render.dir
+
+# All Build rule for target.
+CMakeFiles/render.dir/all:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/depend
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emery/cube/build/CMakeFiles --progress-num=7,8 "Built target render"
+.PHONY : CMakeFiles/render.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/render.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emery/cube/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/render.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emery/cube/build/CMakeFiles 0
+.PHONY : CMakeFiles/render.dir/rule
+
+# Convenience name for target.
+render: CMakeFiles/render.dir/rule
+
+.PHONY : render
+
+# clean rule for target.
+CMakeFiles/render.dir/clean:
+	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/clean
+.PHONY : CMakeFiles/render.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/input.dir

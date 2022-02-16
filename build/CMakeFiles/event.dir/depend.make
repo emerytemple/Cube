@@ -3,7 +3,6 @@
 
 CMakeFiles/event.dir/src/event.c.o: ../src/event.c
 CMakeFiles/event.dir/src/event.c.o: ../src/event.h
-CMakeFiles/event.dir/src/event.c.o: ../src/input.h
 CMakeFiles/event.dir/src/event.c.o: /usr/include/SDL2/SDL.h
 CMakeFiles/event.dir/src/event.c.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/event.dir/src/event.c.o: /usr/include/SDL2/SDL_atomic.h

@@ -4,7 +4,6 @@
 CMakeFiles/event.dir/src/event.c.o
  /home/emery/cube/src/event.c
  /home/emery/cube/src/event.h
- /home/emery/cube/src/input.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
