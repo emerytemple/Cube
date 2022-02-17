@@ -7,16 +7,58 @@ void get_joystick_input()
 
 	for(int i = 0; i < num_joysticks; i++)
 	{
-		SDL_Joystick *handle = SDL_JoystickOpen(i);
-		SDL_bool is_open = SDL_JoystickGetAttached(handle);
+		// joystick
+		SDL_Joystick *joystick = SDL_JoystickOpen(i);
+		SDL_bool is_joystick_open = SDL_JoystickGetAttached(joystick);
 		SDL_JoystickID instanceID = SDL_JoystickGetDeviceInstanceID(i);
-		char *name = (char *)SDL_JoystickNameForIndex(i);
+		char *joystick_name = (char *)SDL_JoystickNameForIndex(i);
+		SDL_bool is_game_controller = SDL_IsGameController(i);
+#if 0
+		char *guid_string = "";
+		SDL_JoystickGUID guid = SDL_JoystickGetGUID(joystick);
+		// SDL_JoystickGUID guid = SDL_JoystickGetDeviceGUID(i);
+		printf("hi");
+		SDL_JoystickGetGUIDString(guid, guid_string, sizeof(guid));
+		printf("guid = %s, ", guid_string);
+#endif
+		printf("device_index = %d, ", i);
+		printf("handle = %p, ", joystick);
+		// printf("guid = %s, ", guid_string);
+		printf("is_open = %s, ", is_joystick_open ? "true" : "false" );
+		printf("instanceID = %d, ", instanceID);
+		printf("name = %s, ", joystick_name);
+		printf("is game ctrl = %s, ", is_game_controller ? "true" : "false" );
+
+		printf("button = ");
+		for(int j = 0; j < SDL_JoystickNumButtons(joystick); j++)
+		{
+			Uint8 button = SDL_JoystickGetButton(joystick, j);
+			printf("%d", button);
+		}
+		printf(", ");
+
+		printf("hat = ");
+		for(int j = 0; j < SDL_JoystickNumHats(joystick); j++)
+		{
+			Uint8 hat = SDL_JoystickGetHat(joystick, j);
+			printf("%d", hat);
+		}
+		printf(", ");
+
+		printf("\n");
+
+		// game controller
+		SDL_GameController *controller = SDL_GameControllerOpen(i);
+		SDL_bool is_controller_open = SDL_GameControllerGetAttached(controller);
+		SDL_Joystick *joystick_for_controller = SDL_GameControllerGetJoystick(controller);
+		char *controller_name = (char *)SDL_GameControllerName(controller);
+		char *controller_for_index = (char *)SDL_GameControllerNameForIndex(i);
 
 		printf("device_index = %d, ", i);
-		printf("handle = %p, ", handle);
-		printf("is_open = %s, ", is_open ? "true" : "false" );
-		printf("instanceID = %d, ", instanceID);
-		printf("name = %s, ", name);
+		printf("ctrl_handle = %p, ", controller);
+		printf("joy for ctrl = %p, ", joystick_for_controller);
+		printf("ctrl name = %s, ", controller_name);
+		printf("ctrl for device index = %s, ", controller_for_index);
 		printf("\n");
 	}
 	system("clear");
