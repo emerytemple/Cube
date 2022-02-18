@@ -8,14 +8,18 @@
 //   |____|/
 
 #include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "event.h"
 #include "input.h"
 #include "render.h"
 
-#include <stdlib.h>
+
 
 int main(int argc, char *argv[])
 {
@@ -32,8 +36,16 @@ int main(int argc, char *argv[])
 	SDL_Window *window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, window_flags);
 	if(window == NULL) printf("SDL window could not be created! SDL_Error: %s\n", SDL_GetError());
 
+	int img_flags = IMG_INIT_PNG;
+	if(!(IMG_Init(img_flags) & img_flags)) printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+
+	if(TTF_Init() == -1) printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if(renderer == NULL) printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+
+	TTF_Font *font = TTF_OpenFont("fonts/ubuntu/Ubuntu-R.ttf", 28);
+	if(font == NULL) printf("Failed to load font! SDL_ttf Error: %s\n", TTF_GetError());
 
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
@@ -48,7 +60,7 @@ int main(int argc, char *argv[])
 		}
 
 		SDL_PumpEvents();
-		get_joystick_input();
+		// get_joystick_input();
 	}
 
 	renderer = NULL;

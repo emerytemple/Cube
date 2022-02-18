@@ -13,14 +13,13 @@ void get_joystick_input()
 		SDL_JoystickID instanceID = SDL_JoystickGetDeviceInstanceID(i);
 		char *joystick_name = (char *)SDL_JoystickNameForIndex(i);
 		SDL_bool is_game_controller = SDL_IsGameController(i);
-#if 0
-		char *guid_string = "";
+
+		char *guid_string = NULL;
 		SDL_JoystickGUID guid = SDL_JoystickGetGUID(joystick);
 		// SDL_JoystickGUID guid = SDL_JoystickGetDeviceGUID(i);
-		printf("hi");
 		SDL_JoystickGetGUIDString(guid, guid_string, sizeof(guid));
 		printf("guid = %s, ", guid_string);
-#endif
+
 		printf("device_index = %d, ", i);
 		printf("handle = %p, ", joystick);
 		// printf("guid = %s, ", guid_string);

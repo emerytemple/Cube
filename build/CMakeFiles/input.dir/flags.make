@@ -6,5 +6,5 @@ C_FLAGS = -fPIC
 
 C_DEFINES = -Dinput_EXPORTS
 
-C_INCLUDES = -I/usr/include/SDL2 -I/home/emery/cube/SRC_DIR 
+C_INCLUDES = -I/usr/local/include/SDL2 -I/usr/include/SDL2 -I/home/emery/cube/SRC_DIR 
 

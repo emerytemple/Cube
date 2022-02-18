@@ -1,1 +1,1 @@
-/usr/bin/cc    CMakeFiles/cube.dir/src/main.c.o  -o ../bin/cube  -Wl,-rpath,/home/emery/cube/lib -lSDL2 ../lib/libevent.so ../lib/libinput.so ../lib/librender.so 
+/usr/bin/cc    CMakeFiles/cube.dir/src/main.c.o  -o ../bin/cube  -Wl,-rpath,/usr/local/lib:/home/emery/cube/lib /usr/local/lib/libSDL2.so -lpthread /usr/local/lib/libSDL2main.a -lSDL2_image -lSDL2 -lSDL2_ttf -lSDL2 ../lib/libevent.so ../lib/libinput.so ../lib/librender.so -lSDL2_ttf 

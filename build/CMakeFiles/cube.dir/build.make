@@ -79,6 +79,8 @@ cube_EXTERNAL_OBJECTS =
 
 ../bin/cube: CMakeFiles/cube.dir/src/main.c.o
 ../bin/cube: CMakeFiles/cube.dir/build.make
+../bin/cube: /usr/local/lib/libSDL2.so
+../bin/cube: /usr/local/lib/libSDL2main.a
 ../bin/cube: ../lib/libevent.so
 ../bin/cube: ../lib/libinput.so
 ../bin/cube: ../lib/librender.so
