@@ -5,8 +5,6 @@
 
 #include <stdlib.h>
 
-void get_joystick_input();
-
 int main(int argc, char *argv[])
 {
 	int success = SDL_Init(SDL_INIT_EVERYTHING);
@@ -32,10 +30,6 @@ int main(int argc, char *argv[])
 		{
 			switch(event.type)
 			{
-				case SDL_JOYDEVICEADDED:
-				case SDL_JOYDEVICEREMOVED:
-					// printf("joystick event\n");
-					break;
 				case SDL_QUIT:
 					quit = true;
 					break;
@@ -45,7 +39,7 @@ int main(int argc, char *argv[])
 		}
 
 		SDL_PumpEvents();
-		get_joystick_input();
+
 	}
 
 	renderer = NULL;
@@ -54,27 +48,6 @@ int main(int argc, char *argv[])
 	SDL_Quit();
 
 	return 0;
-}
-
-void get_joystick_input()
-{
-	int num_joysticks = SDL_NumJoysticks();
-
-	for(int i = 0; i < num_joysticks; i++)
-	{
-		SDL_Joystick *handle = SDL_JoystickOpen(i);
-		SDL_bool is_open = SDL_JoystickGetAttached(handle);
-		SDL_JoystickID instanceID = SDL_JoystickGetDeviceInstanceID(i);
-		char *name = (char *)SDL_JoystickNameForIndex(i);
-
-		printf("device_index = %d, ", i);
-		printf("handle = %p, ", handle);
-		printf("is_open = %s, ", is_open ? "true" : "false" );
-		printf("instanceID = %d, ", instanceID);
-		printf("name = %s, ", name);
-		printf("\n");
-	}
-	system("clear");
 }
 
 
