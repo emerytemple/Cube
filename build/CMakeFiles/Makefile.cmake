@@ -52,5 +52,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cube.dir/DependInfo.cmake"
   "CMakeFiles/render.dir/DependInfo.cmake"
   "CMakeFiles/input.dir/DependInfo.cmake"
+  "CMakeFiles/scene.dir/DependInfo.cmake"
   "CMakeFiles/event.dir/DependInfo.cmake"
   )

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/emery/cube/src/main.c" "/home/emery/cube/build/CMakeFiles/cube.dir/src/main.c.o"
+  "/home/emery/cube/src/test.c" "/home/emery/cube/build/CMakeFiles/cube.dir/src/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -20,6 +20,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/emery/cube/build/CMakeFiles/event.dir/DependInfo.cmake"
   "/home/emery/cube/build/CMakeFiles/input.dir/DependInfo.cmake"
   "/home/emery/cube/build/CMakeFiles/render.dir/DependInfo.cmake"
+  "/home/emery/cube/build/CMakeFiles/scene.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

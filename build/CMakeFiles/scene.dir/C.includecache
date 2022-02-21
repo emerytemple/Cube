@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/emery/cube/src/scene.h
+
+/home/emery/cube/src/scene_stack.c
+stdio.h
+-
+stdlib.h
+-
+scene_stack.h
+/home/emery/cube/src/scene_stack.h
+
+/home/emery/cube/src/scene_stack.h
+stdbool.h
+-
+scene.h
+/home/emery/cube/src/scene.h
+

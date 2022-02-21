@@ -13,7 +13,7 @@ pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 pkg_search_module(SDL2TTF REQUIRED SDL2_ttf>=2.0.0)
 
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
-
+set(SCENE_DIR "${CMAKE_SOURCE_DIR}/src/scenes")
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS} SRC_DIR)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
@@ -23,9 +23,17 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 add_library(event SHARED ${SRC_DIR}/event.c)
 add_library(input SHARED ${SRC_DIR}/input.c)
 add_library(render SHARED ${SRC_DIR}/render.c)
+add_library(scene SHARED
+	${SRC_DIR}/scene.c
+	${SRC_DIR}/scene_stack.c
+	${SCENE_DIR}/main_menu.c
+	${SCENE_DIR}/settings.c
+	${SCENE_DIR}/world_map.c
+	${SCENE_DIR}/level.c
+)
 
-add_executable(${PROJECT_NAME} ${SRC_DIR}/main.c)
-# add_executable(${PROJECT_NAME} ${SRC_DIR}/test.c)
+# add_executable(${PROJECT_NAME} ${SRC_DIR}/main.c)
+add_executable(${PROJECT_NAME} ${SRC_DIR}/test.c)
 
 target_link_libraries(
 	${PROJECT_NAME}
@@ -36,4 +44,5 @@ target_link_libraries(
 	event
 	input
 	render
+	scene
 )

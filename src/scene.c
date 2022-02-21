@@ -1,9 +1,10 @@
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "scene.h"
 
-struct Scene *create_scene(char *name, void *data, update_fp *update, render_fp *render)
+struct Scene *create_scene(char *name, void *data, update_fp update, render_fp render)
 {
 	struct Scene *scene = malloc(sizeof(struct Scene));
 
@@ -16,10 +17,10 @@ struct Scene *create_scene(char *name, void *data, update_fp *update, render_fp 
 	return scene;
 }
 
-void print_scene(struct Scene *scene)
+char *scene_state_to_string(enum SceneState scene_state)
 {
 	char *state;
-	switch(scene->state)
+	switch(scene_state)
 	{
 		case SCENE_STOPPED:
 			state = "stopped";
@@ -41,7 +42,14 @@ void print_scene(struct Scene *scene)
 			break;
 	}
 
-	printf("scene %s, state = %s\n", state);
+	return state;
+}
+
+void print_scene(struct Scene *scene)
+{
+	char *state = scene_state_to_string(scene->state);
+
+	printf("scene %s, state = %s\n", scene->name, state);
 }
 
 void destroy_scene(struct Scene *scene)

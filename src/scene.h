@@ -22,14 +22,15 @@ enum SceneState {
 };
 
 struct Scene {
-	char *name;
+	const char *name;
 	void *data;
 	update_fp update;
 	render_fp render;
 	enum SceneState state;
 };
 
-struct Scene *create_scene();
+struct Scene *create_scene(char *name, void *data, update_fp update, render_fp render);
+char *scene_state_to_string(enum SceneState state);
 void print_scene(struct Scene *scene);
 void destroy_scene(struct Scene *scene);
 

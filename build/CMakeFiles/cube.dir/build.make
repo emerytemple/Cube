@@ -57,33 +57,34 @@ include CMakeFiles/cube.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cube.dir/flags.make
 
-CMakeFiles/cube.dir/src/main.c.o: CMakeFiles/cube.dir/flags.make
-CMakeFiles/cube.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emery/cube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/cube.dir/src/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cube.dir/src/main.c.o   -c /home/emery/cube/src/main.c
+CMakeFiles/cube.dir/src/test.c.o: CMakeFiles/cube.dir/flags.make
+CMakeFiles/cube.dir/src/test.c.o: ../src/test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emery/cube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/cube.dir/src/test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cube.dir/src/test.c.o   -c /home/emery/cube/src/test.c
 
-CMakeFiles/cube.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cube.dir/src/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emery/cube/src/main.c > CMakeFiles/cube.dir/src/main.c.i
+CMakeFiles/cube.dir/src/test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cube.dir/src/test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emery/cube/src/test.c > CMakeFiles/cube.dir/src/test.c.i
 
-CMakeFiles/cube.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cube.dir/src/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emery/cube/src/main.c -o CMakeFiles/cube.dir/src/main.c.s
+CMakeFiles/cube.dir/src/test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cube.dir/src/test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emery/cube/src/test.c -o CMakeFiles/cube.dir/src/test.c.s
 
 # Object files for target cube
 cube_OBJECTS = \
-"CMakeFiles/cube.dir/src/main.c.o"
+"CMakeFiles/cube.dir/src/test.c.o"
 
 # External object files for target cube
 cube_EXTERNAL_OBJECTS =
 
-../bin/cube: CMakeFiles/cube.dir/src/main.c.o
+../bin/cube: CMakeFiles/cube.dir/src/test.c.o
 ../bin/cube: CMakeFiles/cube.dir/build.make
 ../bin/cube: /usr/local/lib/libSDL2.so
 ../bin/cube: /usr/local/lib/libSDL2main.a
 ../bin/cube: ../lib/libevent.so
 ../bin/cube: ../lib/libinput.so
 ../bin/cube: ../lib/librender.so
+../bin/cube: ../lib/libscene.so
 ../bin/cube: CMakeFiles/cube.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emery/cube/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../bin/cube"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cube.dir/link.txt --verbose=$(VERBOSE)

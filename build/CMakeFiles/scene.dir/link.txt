@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libscene.so -o ../lib/libscene.so CMakeFiles/scene.dir/src/scene.c.o CMakeFiles/scene.dir/src/scene_stack.c.o CMakeFiles/scene.dir/src/scenes/main_menu.c.o CMakeFiles/scene.dir/src/scenes/settings.c.o CMakeFiles/scene.dir/src/scenes/world_map.c.o CMakeFiles/scene.dir/src/scenes/level.c.o 

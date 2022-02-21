@@ -150,6 +150,19 @@ input/fast:
 .PHONY : input/fast
 
 #=============================================================================
+# Target rules for targets named scene
+
+# Build rule for target.
+scene: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 scene
+.PHONY : scene
+
+# fast build rule for target.
+scene/fast:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/build
+.PHONY : scene/fast
+
+#=============================================================================
 # Target rules for targets named event
 
 # Build rule for target.
@@ -216,33 +229,6 @@ src/input.c.s:
 	$(MAKE) -f CMakeFiles/input.dir/build.make CMakeFiles/input.dir/src/input.c.s
 .PHONY : src/input.c.s
 
-src/main.o: src/main.c.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.o
-.PHONY : src/main.c.o
-
-src/main.i: src/main.c.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/main.c.s
-.PHONY : src/main.c.s
-
 src/render.o: src/render.c.o
 
 .PHONY : src/render.o
@@ -270,6 +256,195 @@ src/render.c.s:
 	$(MAKE) -f CMakeFiles/render.dir/build.make CMakeFiles/render.dir/src/render.c.s
 .PHONY : src/render.c.s
 
+src/scene.o: src/scene.c.o
+
+.PHONY : src/scene.o
+
+# target to build an object file
+src/scene.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene.c.o
+.PHONY : src/scene.c.o
+
+src/scene.i: src/scene.c.i
+
+.PHONY : src/scene.i
+
+# target to preprocess a source file
+src/scene.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene.c.i
+.PHONY : src/scene.c.i
+
+src/scene.s: src/scene.c.s
+
+.PHONY : src/scene.s
+
+# target to generate assembly for a file
+src/scene.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene.c.s
+.PHONY : src/scene.c.s
+
+src/scene_stack.o: src/scene_stack.c.o
+
+.PHONY : src/scene_stack.o
+
+# target to build an object file
+src/scene_stack.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene_stack.c.o
+.PHONY : src/scene_stack.c.o
+
+src/scene_stack.i: src/scene_stack.c.i
+
+.PHONY : src/scene_stack.i
+
+# target to preprocess a source file
+src/scene_stack.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene_stack.c.i
+.PHONY : src/scene_stack.c.i
+
+src/scene_stack.s: src/scene_stack.c.s
+
+.PHONY : src/scene_stack.s
+
+# target to generate assembly for a file
+src/scene_stack.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scene_stack.c.s
+.PHONY : src/scene_stack.c.s
+
+src/scenes/level.o: src/scenes/level.c.o
+
+.PHONY : src/scenes/level.o
+
+# target to build an object file
+src/scenes/level.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/level.c.o
+.PHONY : src/scenes/level.c.o
+
+src/scenes/level.i: src/scenes/level.c.i
+
+.PHONY : src/scenes/level.i
+
+# target to preprocess a source file
+src/scenes/level.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/level.c.i
+.PHONY : src/scenes/level.c.i
+
+src/scenes/level.s: src/scenes/level.c.s
+
+.PHONY : src/scenes/level.s
+
+# target to generate assembly for a file
+src/scenes/level.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/level.c.s
+.PHONY : src/scenes/level.c.s
+
+src/scenes/main_menu.o: src/scenes/main_menu.c.o
+
+.PHONY : src/scenes/main_menu.o
+
+# target to build an object file
+src/scenes/main_menu.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/main_menu.c.o
+.PHONY : src/scenes/main_menu.c.o
+
+src/scenes/main_menu.i: src/scenes/main_menu.c.i
+
+.PHONY : src/scenes/main_menu.i
+
+# target to preprocess a source file
+src/scenes/main_menu.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/main_menu.c.i
+.PHONY : src/scenes/main_menu.c.i
+
+src/scenes/main_menu.s: src/scenes/main_menu.c.s
+
+.PHONY : src/scenes/main_menu.s
+
+# target to generate assembly for a file
+src/scenes/main_menu.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/main_menu.c.s
+.PHONY : src/scenes/main_menu.c.s
+
+src/scenes/settings.o: src/scenes/settings.c.o
+
+.PHONY : src/scenes/settings.o
+
+# target to build an object file
+src/scenes/settings.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/settings.c.o
+.PHONY : src/scenes/settings.c.o
+
+src/scenes/settings.i: src/scenes/settings.c.i
+
+.PHONY : src/scenes/settings.i
+
+# target to preprocess a source file
+src/scenes/settings.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/settings.c.i
+.PHONY : src/scenes/settings.c.i
+
+src/scenes/settings.s: src/scenes/settings.c.s
+
+.PHONY : src/scenes/settings.s
+
+# target to generate assembly for a file
+src/scenes/settings.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/settings.c.s
+.PHONY : src/scenes/settings.c.s
+
+src/scenes/world_map.o: src/scenes/world_map.c.o
+
+.PHONY : src/scenes/world_map.o
+
+# target to build an object file
+src/scenes/world_map.c.o:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/world_map.c.o
+.PHONY : src/scenes/world_map.c.o
+
+src/scenes/world_map.i: src/scenes/world_map.c.i
+
+.PHONY : src/scenes/world_map.i
+
+# target to preprocess a source file
+src/scenes/world_map.c.i:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/world_map.c.i
+.PHONY : src/scenes/world_map.c.i
+
+src/scenes/world_map.s: src/scenes/world_map.c.s
+
+.PHONY : src/scenes/world_map.s
+
+# target to generate assembly for a file
+src/scenes/world_map.c.s:
+	$(MAKE) -f CMakeFiles/scene.dir/build.make CMakeFiles/scene.dir/src/scenes/world_map.c.s
+.PHONY : src/scenes/world_map.c.s
+
+src/test.o: src/test.c.o
+
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.c.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/test.c.o
+.PHONY : src/test.c.o
+
+src/test.i: src/test.c.i
+
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.c.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/test.c.i
+.PHONY : src/test.c.i
+
+src/test.s: src/test.c.s
+
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.c.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/test.c.s
+.PHONY : src/test.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -281,6 +456,7 @@ help:
 	@echo "... render"
 	@echo "... rebuild_cache"
 	@echo "... input"
+	@echo "... scene"
 	@echo "... event"
 	@echo "... src/event.o"
 	@echo "... src/event.i"
@@ -288,12 +464,30 @@ help:
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 	@echo "... src/render.o"
 	@echo "... src/render.i"
 	@echo "... src/render.s"
+	@echo "... src/scene.o"
+	@echo "... src/scene.i"
+	@echo "... src/scene.s"
+	@echo "... src/scene_stack.o"
+	@echo "... src/scene_stack.i"
+	@echo "... src/scene_stack.s"
+	@echo "... src/scenes/level.o"
+	@echo "... src/scenes/level.i"
+	@echo "... src/scenes/level.s"
+	@echo "... src/scenes/main_menu.o"
+	@echo "... src/scenes/main_menu.i"
+	@echo "... src/scenes/main_menu.s"
+	@echo "... src/scenes/settings.o"
+	@echo "... src/scenes/settings.i"
+	@echo "... src/scenes/settings.s"
+	@echo "... src/scenes/world_map.o"
+	@echo "... src/scenes/world_map.i"
+	@echo "... src/scenes/world_map.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 

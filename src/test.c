@@ -5,6 +5,45 @@
 
 #include <stdlib.h>
 
+#include "scene.h"
+#include "scene_stack.h"
+
+#include "scenes/main_menu.h"
+#include "scenes/settings.h"
+#include "scenes/world_map.h"
+#include "scenes/level.h"
+
+int main()
+{
+	struct MainMenu *main_menu = create_main_menu();
+	struct Settings *settings = create_settings();
+	struct WorldMap *world_map = create_world_map();
+	struct Level *level = create_level();
+
+	struct Scene *main_menu_scene = create_scene("main menu", main_menu, main_menu_update, main_menu_render);
+	struct Scene *settings_scene = create_scene("settings", settings, settings_update, settings_render);
+	struct Scene *world_map_scene = create_scene("world map", world_map, world_map_update, world_map_render);
+	struct Scene *level_scene = create_scene("level", level, level_update, level_render);
+
+	struct SceneStack *stack = create_scene_stack(5);
+
+	push_scene(stack, main_menu_scene);
+	push_scene(stack, settings_scene);
+	push_scene(stack, world_map_scene);
+	push_scene(stack, level_scene);
+
+	print_scene_stack(stack);
+
+	int alpha = 0.5;
+	stack_update(stack);
+	stack_render(stack, alpha);
+
+	return 0;
+}
+
+
+
+#if 0
 int main(int argc, char *argv[])
 {
 	int success = SDL_Init(SDL_INIT_EVERYTHING);
@@ -50,7 +89,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-
+#endif
 
 
 
