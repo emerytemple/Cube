@@ -64,7 +64,9 @@ void stack_update(struct SceneStack *scenes)
 {
 	for(int i = 0; i <= scenes->top; i++)
 	{
-		scenes->scenes[i].update(scenes->scenes[i].data);
+		struct Scene current = scenes->scenes[i];
+		// if(current.state == STATE_ACTIVE || ...) // add this later
+		current.update(current.data);
 	}
 }
 
@@ -72,7 +74,8 @@ void stack_render(struct SceneStack *scenes, int alpha)
 {
 	for(int i = 0; i <= scenes->top; i++)
 	{
-		scenes->scenes[i].render(scenes->scenes[i].data, alpha);
+		struct Scene current = scenes->scenes[i];
+		current.render(current.data, alpha);
 	}
 }
 
