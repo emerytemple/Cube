@@ -19,7 +19,8 @@ void print_scene_stack(struct SceneStack *scenes)
 {
 	for(int i = 0; i <= scenes->top; i++)
 	{
-		printf("scene[%d] = %s\n", i, scenes->scenes[i].name);
+		char *state = scene_state_to_string(scenes->scenes[i].state);
+		printf("scene[%d] = %s, state = %s\n", i, scenes->scenes[i].name, state);
 	}
 }
 
@@ -33,19 +34,39 @@ bool isEmpty(struct SceneStack *scenes)
 	return scenes->top == -1;
 }
 
-void push_scene(struct SceneStack *scenes, struct Scene *scene)
+void push_scene(struct SceneStack *scenes, struct Scene *scene, enum SceneState state)
 {
-	if(isFull(scenes)) return;
+	if(isFull(scenes))
+	{
+		printf("cannot push scene. stack is full\n");
+		return;
+	}
+
+	if(!isEmpty(scenes))
+	{
+		if(state == SCENE_ACTIVE)
+		{
+			printf("cannot have more than one active scene");
+			return;
+		}
+
+		scenes->scenes[scenes->top].state = state;
+	}
 
 	scenes->top++;
+
 	scenes->scenes[scenes->top] = *scene;
+	scenes->scenes[scenes->top].state = SCENE_ACTIVE;
 }
 
 struct Scene *pop_scene(struct SceneStack *scenes)
 {
 	if(isEmpty(scenes)) return NULL;
 
-	return &scenes->scenes[scenes->top--];
+	scenes->top--;
+	scenes->scenes[scenes->top].state = SCENE_ACTIVE;
+
+	return &scenes->scenes[scenes->top];
 }
 
 struct Scene *peek_scene(struct SceneStack *scenes)
@@ -57,6 +78,11 @@ struct Scene *peek_scene(struct SceneStack *scenes)
 
 void destroy_scene_stack(struct SceneStack *scenes)
 {
+	for(int i = 0; i <= scenes->capacity; i++)
+	{
+		destroy_scene(&scenes->scenes[scenes->top]);
+	}
+
 	free(scenes);
 }
 
@@ -65,8 +91,11 @@ void stack_update(struct SceneStack *scenes)
 	for(int i = 0; i <= scenes->top; i++)
 	{
 		struct Scene current = scenes->scenes[i];
-		// if(current.state == STATE_ACTIVE || ...) // add this later
-		current.update(current.data);
+
+		if(current.state == SCENE_ACTIVE || current.state == SCENE_INVISIBLE)
+		{
+			current.update(current.data);
+		}
 	}
 }
 
@@ -75,7 +104,10 @@ void stack_render(struct SceneStack *scenes, int alpha)
 	for(int i = 0; i <= scenes->top; i++)
 	{
 		struct Scene current = scenes->scenes[i];
-		current.render(current.data, alpha);
+		if(current.state == SCENE_ACTIVE || current.state == SCENE_PAUSED)
+		{
+			current.render(current.data, alpha);
+		}
 	}
 }
 

@@ -22,7 +22,7 @@ void main_menu_render(void *data, int alpha)
 {
 	struct MainMenu *main_menu = (struct MainMenu *) data;
 
-	printf("rendering main menul\n");
+	printf("rendering main menu\n");
 }
 
 void destroy_main_menu(void *data)

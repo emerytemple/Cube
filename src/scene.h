@@ -14,6 +14,7 @@ typedef void (*render_fp)(void *, int);
 */
 
 enum SceneState {
+	SCENE_NONE,
 	SCENE_STOPPED,
 	SCENE_ASLEEP,
 	SCENE_PAUSED,

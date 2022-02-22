@@ -27,10 +27,10 @@ int main()
 
 	struct SceneStack *stack = create_scene_stack(5);
 
-	push_scene(stack, main_menu_scene);
-	push_scene(stack, settings_scene);
-	push_scene(stack, world_map_scene);
-	push_scene(stack, level_scene);
+	push_scene(stack, main_menu_scene, SCENE_NONE);
+	push_scene(stack, settings_scene, SCENE_STOPPED);
+	push_scene(stack, world_map_scene, SCENE_ASLEEP);
+	push_scene(stack, level_scene, SCENE_PAUSED);
 
 	print_scene_stack(stack);
 

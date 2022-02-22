@@ -16,9 +16,9 @@ struct SceneStack {
 
 struct SceneStack *create_scene_stack(int capacity);
 void print_scene_stack(struct SceneStack *scenes);
-bool isFull(struct SceneStack *scenes); // change instance variable to stack, also in .c
+bool isFull(struct SceneStack *scenes);
 bool isEmpty(struct SceneStack *scenes);
-void push_scene(struct SceneStack *scenes, struct Scene *scene);
+void push_scene(struct SceneStack *scenes, struct Scene *scene, enum SceneState state);
 struct Scene *pop_scene(struct SceneStack *scenes);
 struct Scene *peek_scene(struct SceneStack *scenes);
 void destroy_scene_stack(struct SceneStack *scenes);
